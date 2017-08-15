@@ -1,7 +1,6 @@
 requirejs(["markdown/markdown"], function(markdown) {
 
 function MarkdownRenderer() {
-  this.text = "Z";
 }
 
 MarkdownRenderer.prototype.transform = function(theMarkupText) {
