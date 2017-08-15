@@ -1,4 +1,4 @@
-requirejs(["markdown"], function(markdown) {
+requirejs(["markdown/markdown"], function(markdown) {
 
 function MarkdownRenderer() {
   this.text = "Z";
