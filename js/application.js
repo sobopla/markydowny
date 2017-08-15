@@ -1,18 +1,33 @@
 requirejs(["markdown/markdown"], function(markdown) {
 
-function MarkdownRenderer() {
+function MarkdownModel() {
 }
 
-MarkdownRenderer.prototype.transform = function(theMarkupText) {
+MarkdownModel.prototype.transform = function(theMarkupText) {
   return markdown.toHTML(theMarkupText);
 }
 
-var renderer = new MarkdownRenderer;
+function MarkdownView() {
+}
+
+MarkdownView.prototype.getMarkdownText = function() {
+  return $(".userinput").val();
+}
+
+MarkdownView.prototype.setHTML = function(theHtmlVersion) {
+  $("#preview").html(theHtmlVersion);
+}
+
+function MarkdownController(model, view) {
+  $(".userinput").keyup(function(){
+    view.setHTML(model.transform(view.getMarkdownText()));
+  });
+}
 
 $(document).ready(function(){
-  $(".userinput").keyup(function(){
-    $("#preview").html(renderer.transform($(".userinput").val()));
-  });
+  var model      = new MarkdownModel;
+  var view       = new MarkdownView;
+  var controller = new MarkdownController(model, view);
 });
 
 });
