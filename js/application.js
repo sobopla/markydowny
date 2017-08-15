@@ -11,8 +11,8 @@ MarkdownRenderer.prototype.transform = function(theMarkupText) {
 var renderer = new MarkdownRenderer;
 
 $(document).ready(function(){
-  $(".markdown").keyup(function(){
-    $("#preview").html(renderer.transform($(".markdown").val()));
+  $(".userinput").keyup(function(){
+    $("#preview").html(renderer.transform($(".userinput").val()));
   });
 });
 
